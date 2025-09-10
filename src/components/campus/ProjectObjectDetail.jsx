@@ -1,21 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import clip from './img/clip.png';
 
-/* ===== Shell ===== */
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
+const MobileShell = styled.div`
+  width: 100vw;
+  padding: 12px 20px 24px;
   background: #fafbfc;
 `;
-const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
-`;
 
-/* ===== Breadcrumb ===== */
 const Crumb = styled.div`
   display: flex;
   align-items: center;
@@ -23,33 +15,44 @@ const Crumb = styled.div`
   font-size: 16px;
   color: #6b7680;
   font-weight: 600;
-  margin: 2px 0 8px;
+  margin: 2px 0 20px;
 `;
-const CrumbDim = styled.span``;
-const CrumbSep = styled.span`color:#9aa5b1;`;
-const CrumbAccent = styled.span`color:#2ec4b6;`;
+const CrumbDim = styled.span`
+font-size : 18px;
+margin-left: 10px;
+`;
+
+const CrumbSep = styled.span`
+font-size : 18px;
+color:#9aa5b1;
+`;
+
+const CrumbAccent = styled.span`
+font-size: 14px;
+color:#2ec4b6;
+`;
 
 const Divider = styled.div`
+width: 373px;
   height: 2px;
   background: #2ec4b6;
   border-radius: 2px;
   opacity: .6;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 `;
 
-/* ===== Header line: [산출물] + 제목 ===== */
 const TitleRow = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `;
 const GrayTag = styled.span`
-  font-size: 12px;
-  padding: 4px 6px;
+  font-size: 16px;
   border-radius: 4px;
   background: #f3f5f7;
   color: #8b95a1;
   font-weight: 700;
+  margin-left: 10px;
 `;
 const Title = styled.h3`
   margin: 0;
@@ -59,7 +62,6 @@ const Title = styled.h3`
   line-height: 1.5;
 `;
 
-/* ===== 작성자/일시 ===== */
 const MetaRow = styled.div`
   display: flex;
   align-items: center;
@@ -67,24 +69,26 @@ const MetaRow = styled.div`
   font-size: 12px;
   color: #98a1a8;
   margin-top: 6px;
+  margin-left: 10px;
 `;
 
-/* ===== 얇은 구분선 ===== */
 const Hr = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
-  margin: 12px 0 14px;
+  background: #D9D9D9;
+  border: 0;
+  margin: 12px 0 10px;
 `;
 
-/* ===== 본문 ===== */
 const Body = styled.div`
   font-size: 13px;
   color: #6b7680;
   line-height: 1.7;
   white-space: pre-line;
+  margin-bottom: 175px;
+  margin-left: 10px;
 `;
 
-/* ===== 첨부 ===== */
 const AttachRow = styled.div`
   display: flex;
   align-items: center;
@@ -92,15 +96,22 @@ const AttachRow = styled.div`
   color: #8b95a1;
   font-size: 13px;
   margin-top: 16px;
+  margin-bottom: 15px;
+  margin-left: 10px;
 `;
-const Paperclip = styled.span`font-size:16px;`;
+const AttachmentIcon = styled.img`
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  object-fit: contain;
+`;
 const FileName = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
 
-/* ===== 하단 버튼 ===== */
 const Footer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -125,9 +136,7 @@ const Primary = styled(Button)`
 
 export default function ProjectObjectDetail() {
   return (
-    <PageWrap>
       <MobileShell>
-        {/* breadcrumb */}
         <Crumb>
           <CrumbDim>결과물</CrumbDim>
           <CrumbSep>›</CrumbSep>
@@ -135,7 +144,6 @@ export default function ProjectObjectDetail() {
         </Crumb>
         <Divider />
 
-        {/* Header */}
         <TitleRow>
           <GrayTag>[산출물]</GrayTag>
           <Title>Camp_us 컴포넌트 명세서</Title>
@@ -143,7 +151,7 @@ export default function ProjectObjectDetail() {
 
         <MetaRow>
           <span>김원희</span>
-          <span>•</span>
+          <span>ㅣ</span>
           <span>2025-09-22 09:40</span>
         </MetaRow>
 
@@ -152,7 +160,7 @@ export default function ProjectObjectDetail() {
         <Body>Camp_us 컴포넌트 명세서 입니다.</Body>
 
         <AttachRow>
-          <Paperclip>📎</Paperclip>
+          <AttachmentIcon src={clip}/>
           <FileName>자바프로그래밍 권오규 10주차.hwp</FileName>
         </AttachRow>
 
@@ -163,6 +171,5 @@ export default function ProjectObjectDetail() {
           <Button>목록</Button>
         </Footer>
       </MobileShell>
-    </PageWrap>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import dd from "./video/Lecture1.mp4";
 
 const PageWrap = styled.div`
   display: flex;
@@ -7,11 +8,11 @@ const PageWrap = styled.div`
   width: 100%;
   background: #fafbfc;
 `;
+
 const MobileShell = styled.div`
   width: 100%;
-  max-width: 360px;
   margin: 0 auto;
-  padding: 12px 16px 24px;
+  padding: 22px 20px 24px
 `;
 
 const TopBar = styled.div`
@@ -26,22 +27,23 @@ const PageTitle = styled.div`
 const TopActions = styled.div`
   margin-left: auto;
 `;
-const TopBtn = styled.button`
+const ModifyBtn = styled.button`
   height: 28px;
   padding: 0 12px;
   font-size: 12px;
-  border: 1px solid #dfe5ea;
+  border: 1px solid #2EC4B6;
   background: #fff;
-  color: #59636b;
+  color: #2EC4B6;
   border-radius: 8px;
   cursor: pointer;
 `;
 const PageDivider = styled.div`
   height: 2px;
   background: #2ec4b6;
-  opacity: .6;
+  opacity: 0.6;
   border-radius: 2px;
-  margin-bottom: 14px;
+  margin-bottom: 15px;
+  margin-top: 20px;
 `;
 
 const Title = styled.h3`
@@ -57,10 +59,11 @@ const MetaRow = styled.div`
   color: #98a1a8;
 `;
 const CardHr = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 12px 0 14px;
+  margin: 12px 0 10px;
 `;
 
 const VideoWrap = styled.div`
@@ -69,6 +72,7 @@ const VideoWrap = styled.div`
   overflow: hidden;
   background: #000;
   border: 1px solid #e9eef2;
+  margin-bottom: 18px;
 `;
 const VideoTag = styled.video`
   display: block;
@@ -77,10 +81,10 @@ const VideoTag = styled.video`
 `;
 
 const Desc = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   color: #6b7680;
   line-height: 1.7;
-  margin: 12px 0 0;
+  margin: 12px 0 50px;
 `;
 const Footer = styled.div`
   display: flex;
@@ -103,15 +107,17 @@ export default function LectureOnlineDetail({
   period = "2025-09-02 ~ 2025-09-03",
   title = "객체지향 핵심 이해",
   description = "자바로 배우는 고급 프로그래밍 수업",
-  videoSrc = "/video/Lecture1.mp4",  
-  posterSrc = "", 
+  videoSrc = dd,
+  posterSrc = "",
 }) {
   return (
     <PageWrap>
       <MobileShell>
         <TopBar>
           <PageTitle>온라인 강의</PageTitle>
-          <TopActions><TopBtn>수정</TopBtn></TopActions>
+          <TopActions>
+            <ModifyBtn>수정</ModifyBtn>
+          </TopActions>
         </TopBar>
         <PageDivider />
 
@@ -124,13 +130,9 @@ export default function LectureOnlineDetail({
         <CardHr />
 
         <VideoWrap>
-          <VideoTag
-            controls
-            preload="metadata"
-            poster={posterSrc}
-            src={videoSrc}
-          />
+          <VideoTag controls preload="metadata" poster={posterSrc} src={videoSrc} />
         </VideoWrap>
+        <CardHr />
 
         <Desc>{description}</Desc>
 

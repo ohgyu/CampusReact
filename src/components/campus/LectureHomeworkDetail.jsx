@@ -1,21 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import clip from './img/clip.png';
 
-/* ===== Shell ===== */
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
 
 const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
+  width: 100vw;
+  padding: 12px 20px 24px;
+  background: #fafbfc;
 `;
 
-/* ===== Header (삭제/수정) ===== */
 const TopBar = styled.div`
   display: flex;
   align-items: center;
@@ -25,6 +18,7 @@ const TopBar = styled.div`
 const PageTitle = styled.div`
   font-size: 18px;
   font-weight: 700;
+  margin-left: 10px;
 `;
 
 const TopActions = styled.div`
@@ -33,55 +27,55 @@ const TopActions = styled.div`
   gap: 8px;
 `;
 
-const TopBtn = styled.button`
+const DeleteBtn = styled.button`
   height: 28px;
   padding: 0 12px;
   font-size: 12px;
   border: 1px solid #dfe5ea;
   background: #fff;
   color: #59636b;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
 `;
+
+const ModifyBtn = styled.button`
+  height: 28px;
+  padding: 0 12px;
+  font-size: 12px;
+  border: 1px solid #2EC4B6;
+  background: #2EC4B6;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+`;
+
 
 const PageDivider = styled.div`
   height: 2px;
   background: #2ec4b6;
   opacity: .6;
   border-radius: 2px;
+  margin-top: 18px;
   margin-bottom: 14px;
 `;
 
 /* ===== Card ===== */
 const Card = styled.div`
   background: #fff;
-  border: 1px solid #e9eef2;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 14px;
-  & + & {
-    position: relative;
-    margin-top: 20px;
-  }
-  & + &::before {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: -12px;
-    height: 2px;
-    background: #2ec4b6;
-    border-radius: 2px;
-  }
 `;
 
 const CardTitle = styled.div`
   font-size: 16px;
   font-weight: 700;
   margin: 2px 0 8px;
+  margin-left: 10px;
 `;
 
 const CardMeta = styled.div`
   font-size: 12px;
   color: #98a1a8;
+  margin-left: 10px;
 `;
 
 const CardFooter = styled.div`
@@ -92,16 +86,20 @@ const CardFooter = styled.div`
 `;
 
 const CardHr = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 16px 0;
+  margin: 12px 0 10px;
 `;
 
 const AssignBody = styled.div`
   font-size: 13px;
   color: #6b7680;
   line-height: 1.7;
+  margin-bottom: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 /* ===== Buttons ===== */
@@ -114,12 +112,16 @@ const Button = styled.button`
   color: #59636b;
   border-radius: 8px;
   cursor: pointer;
+  margin-top: 40px;
+  margin-right: 10px;
 `;
 
 const PrimaryButton = styled(Button)`
   background: #2ec4b6;
   color: #fff;
   border-color: #2ec4b6;
+  margin-bottom: 10px;
+  margin-top: 40px;
 `;
 
 /* ===== Submission ===== */
@@ -133,6 +135,7 @@ const SubmissionHead = styled.div`
 export const SubmissionAuthor = styled.span`
   white-space: nowrap;
   font-size: 13px;
+  margin-left: 10px;
 `;
 
 const SubmissionTime = styled.span`
@@ -154,7 +157,7 @@ const Chip = styled.span`
   padding: 4px 9px;
   font-size: 12px;
   line-height: 1;
-  border-radius: 999px;
+  border-radius: 5px;
   background: #fff;
   border: 1px solid #e3e7ec;
   color: #8b95a1;
@@ -163,6 +166,7 @@ const Chip = styled.span`
 const ChipBrand = styled(Chip)`
   border-color: #2ec4b6;
   color: #1a998d;
+  margin-right: 10px;
 `;
 
 const SubmissionText = styled.div`
@@ -170,28 +174,23 @@ const SubmissionText = styled.div`
   color: #47525b;
   line-height: 1.7;
   margin: 10px 0 12px;
+  margin-left: 10px;
 `;
 
 const Attachment = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border: 1px dashed #d7dee3;
   border-radius: 12px;
-  background: #f5f7f9;
+  margin-left: 10px;
 `;
 
-const AttachmentIcon = styled.div`
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #e3e7ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const AttachmentIcon = styled.img`
+  display: block;
+  width: 14px;
+  height: 14px;
   background: #fff;
-  font-size: 14px;
+  object-fit: contain;
 `;
 
 const AttachmentName = styled.div`
@@ -202,21 +201,24 @@ const AttachmentName = styled.div`
   text-overflow: ellipsis;
 `;
 
+const Line = styled.div`
+  width: 100%;
+  height: 12px; 
+  color: #666666;
+`
+
 export default function LectureHomeworkDetail() {
   return (
-    <PageWrap>
       <MobileShell>
-        {/* 상단 타이틀 + 삭제/수정 */}
         <TopBar>
           <PageTitle>과제제출</PageTitle>
           <TopActions>
-            <TopBtn>삭제</TopBtn>
-            <TopBtn>수정</TopBtn>
+            <DeleteBtn>삭제</DeleteBtn>
+            <ModifyBtn>수정</ModifyBtn>
           </TopActions>
         </TopBar>
         <PageDivider />
 
-        {/* 과제 카드 */}
         <Card>
           <CardTitle>7주차 과제 입니다.</CardTitle>
           <CardMeta>2025-08-05 16:00 ~ 2025-08-11 23:59</CardMeta>
@@ -229,15 +231,15 @@ export default function LectureHomeworkDetail() {
             <br />
             토론 직후 개인별로 간단한 자기평가서(자유양식, A4 1장 내외) 제출
           </AssignBody>
-
-          {/* 목록 왼쪽에 제출 버튼 */}
+          <CardHr />
           <CardFooter>
             <PrimaryButton>제출</PrimaryButton>
             <Button>목록</Button>
           </CardFooter>
         </Card>
+        <Line/>
+        <PageDivider />
 
-        {/* 제출 카드 */}
         <Card>
           <SubmissionHead>
             <SubmissionAuthor>권오규</SubmissionAuthor>
@@ -251,13 +253,12 @@ export default function LectureHomeworkDetail() {
           <SubmissionText>
             안녕하세요. 20220001 권오규입니다. 과제 제출합니다.
           </SubmissionText>
-
+          <CardHr />
           <Attachment>
-            <AttachmentIcon>📎</AttachmentIcon>
+            <AttachmentIcon src={clip}/>
             <AttachmentName>자바프로그래밍 권오규 7주차.hwp</AttachmentName>
           </Attachment>
         </Card>
       </MobileShell>
-    </PageWrap>
   );
 }

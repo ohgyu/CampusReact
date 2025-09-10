@@ -1,28 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import clip from './img/clip.png';
 
-/* ===== Shell ===== */
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
 const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
+  width: 100vw;
+  padding: 12px 20px 24px;
+  background: #fafbfc;
 `;
 
-/* ===== Header ===== */
 const TopBar = styled.div`
   display: flex;
   align-items: center;
-  margin: 6px 0 10px;
 `;
 const PageTitle = styled.div`
   font-size: 18px;
-  font-weight: 700;
+  margin-bottom: 18px;
 `;
 const TopActions = styled.div`
   margin-left: auto;
@@ -36,7 +28,7 @@ const ActionChip = styled.button`
   border: 1px solid #e3e7ec;
   background: #fff;
   color: #8b95a1;
-  border-radius: 999px;
+  border-radius: 5px;
   cursor: pointer;
 `;
 const ActionChipBrand = styled(ActionChip)`
@@ -49,16 +41,11 @@ const PageDivider = styled.div`
   background: #2ec4b6;
   opacity: .6;
   border-radius: 2px;
-  margin-bottom: 14px;
+  margin-bottom: 15px;
 `;
 
-/* ===== Card ===== */
 const Card = styled.div`
   background: #fff;
-  border: 1px solid #e9eef2;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 14px;
   & + & {
     position: relative;
     margin-top: 20px;
@@ -83,15 +70,17 @@ const CardMeta = styled.div`
   color: #98a1a8;
 `;
 const CardHr = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 16px 0;
+  margin: 16px 0 15px;
 `;
 const AssignBody = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #6b7680;
   line-height: 1.7;
+  margin-bottom: 100px;
 `;
 
 const CardFooter = styled.div`
@@ -154,6 +143,13 @@ const Avatar = styled.div`
   color: #6b7680;
   overflow: hidden;
 `;
+const AttachmentIcon = styled.img`
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  object-fit: contain;
+`;
 const AvImg = styled.img`
   width: 100%; height: 100%; object-fit: cover;
 `;
@@ -182,13 +178,8 @@ const Text = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-const Clip = styled.div`
-  display: flex; align-items: center; justify-content: center;
-  color: #8b95a1; font-size: 14px;
-`;
 
 export default function LectureHoneworkProDetail() {
-  // 샘플 제출 데이터
   const submissions = [
     {
       id: 1,
@@ -196,7 +187,7 @@ export default function LectureHoneworkProDetail() {
       time: "2025-08-31 14:20",
       text: "안녕하세요. 교수님 과제 제출합니다.",
       clip: true,
-      avatar: "/img/avatar1.png", // 없으면 이니셜 원으로 표시
+      avatar: "/img/avatar1.png", 
     },
     {
       id: 2,
@@ -226,13 +217,10 @@ export default function LectureHoneworkProDetail() {
 
   const openSubmission = (row) => {
     alert(`${row.name} 제출물 열기`);
-    // TODO: 상세 페이지로 이동 or 파일 열기
   };
 
   return (
-    <PageWrap>
       <MobileShell>
-        {/* 상단 타이틀 + 삭제/수정 */}
         <TopBar>
           <PageTitle>과제제출</PageTitle>
           <TopActions>
@@ -242,7 +230,6 @@ export default function LectureHoneworkProDetail() {
         </TopBar>
         <PageDivider />
 
-        {/* 과제 설명 카드 */}
         <Card>
           <CardTitle>7주차 과제 입니다.</CardTitle>
           <CardMeta>2025-08-05 16:00 ~ 2025-08-11 23:59</CardMeta>
@@ -253,13 +240,12 @@ export default function LectureHoneworkProDetail() {
             <br />팀원 간 역할 분담 (서론/논점 정리, 주장, 반론 대응 등) 필수
             <br />토론 직후 개인별로 간단한 자기평가서(자유양식, A4 1장 내외) 제출
           </AssignBody>
-
+          <CardHr />
           <CardFooter>
             <Button>목록</Button>
           </CardFooter>
         </Card>
 
-        {/* 제출 과제 목록 섹션 */}
         <SectionTitle>제출 과제</SectionTitle>
         <SectionDivider />
         <Card>
@@ -278,12 +264,11 @@ export default function LectureHoneworkProDetail() {
                     {s.text}
                   </Text>
                 </RowMain>
-                <Clip>{s.clip ? "📎" : ""}</Clip>
+                <AttachmentIcon src={clip}/>
               </Row>
             ))}
           </List>
         </Card>
       </MobileShell>
-    </PageWrap>
   );
 }

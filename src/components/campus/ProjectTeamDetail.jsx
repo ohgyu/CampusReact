@@ -1,26 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-/* ===== Shell ===== */
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
+const MobileShell = styled.div`
+  width: 100vw;
+  padding: 12px 20px 24px;
   background: #fafbfc;
 `;
-const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
-`;
 
-/* ===== Header ===== */
 const TopBar = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 6px 0 4px; /* 살짝 촘촘하게 */
+  margin: 0 0 20px;
 `;
 const CloseBtn = styled.button`
   width: 28px;
@@ -37,25 +28,30 @@ const CloseBtn = styled.button`
   line-height: 1;
 `;
 
-/* 제목 줄: X와 분리된 독립 라인 */
 const TitleHeader = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 가운데 칸이 항상 정확히 중앙 */
+  display: flex;
   align-items: center;
+  justify-content: space-between; /* 좌우 끝으로 */
   margin: 0 0 6px;
+  gap: 8px;
 `;
+
 const Semester = styled.div`
   font-size: 13px;
   font-weight: 700;
   color: #6b7680;
-  justify-self: start;
 `;
+
 const HeaderTitle = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  color: #333;
-  text-align: center;
-  justify-self: center;
+  color: #888;
+  text-align: right;
+  flex: 1;         /* 오른쪽으로 밀착되게 */
+  min-width: 0;    /* ellipsis 동작 보장 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const PageDivider = styled.div`
@@ -66,15 +62,10 @@ const PageDivider = styled.div`
   margin-bottom: 14px;
 `;
 
-/* ===== Card ===== */
 const Card = styled.div`
   background: #fff;
-  border: 1px solid #e9eef2;
-  border-radius: 12px;
-  padding: 16px;
 `;
 
-/* ===== Detail Grid ===== */
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 72px 1fr;
@@ -92,19 +83,18 @@ const Value = styled.div`
 `;
 
 const Body = styled.div`
-  margin-top: 6px;
   font-size: 13px;
   color: #6b7680;
   line-height: 1.7;
   white-space: pre-line;
 `;
 
-/* ===== Footer ===== */
 const SoftDivider = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 14px 0;
+  margin: 16px 0 16px;
 `;
 const Footer = styled.div`
   display: flex;
@@ -142,18 +132,14 @@ export default function ProjectTeamDetail({
   };
 
   return (
-    <PageWrap>
       <MobileShell>
-        {/* 1줄: X 버튼만 */}
         <TopBar>
           <CloseBtn aria-label="닫기" onClick={handleClose}>✕</CloseBtn>
         </TopBar>
 
-        {/* 2줄: 좌측 학기 / 중앙 제목 */}
         <TitleHeader>
           <Semester>{data.semester}</Semester>
           <HeaderTitle>{data.title}</HeaderTitle>
-          <span /> {/* 오른쪽 빈칸(균형용) */}
         </TitleHeader>
 
         <PageDivider />
@@ -174,7 +160,7 @@ export default function ProjectTeamDetail({
 
             <Label>내용</Label>
             <Value>
-              <Body style={{ minHeight: "150px" }}>{data.content}</Body>
+              <Body style={{ minHeight: "100px" }}>{data.content}</Body>
             </Value>
           </Grid>
 
@@ -185,6 +171,5 @@ export default function ProjectTeamDetail({
           </Footer>
         </Card>
       </MobileShell>
-    </PageWrap>
   );
 }

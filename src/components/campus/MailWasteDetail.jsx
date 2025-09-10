@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import star from './img/star.png';
+import staron from './img/staron.png';
+import clip from './img/clip.png';
 
-/* ===== Shell ===== */
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
+const MobileShell = styled.div`
+  width: 100vw;
+  padding: 12px 20px 24px;
   background: #fafbfc;
 `;
-const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
-`;
 
-/* ===== Header ===== */
-const TopBar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 6px 0 6px;
-`;
+
 const CloseBtn = styled.button`
   width: 28px;
   height: 28px;
@@ -40,9 +29,7 @@ const PageTitle = styled.div`
   font-size: 18px;
   font-weight: 700;
 `;
-const TopActions = styled.div`
-  margin-left: auto;
-`;
+
 
 const SubHeader = styled.div`
   display: flex;
@@ -74,12 +61,8 @@ const PageDivider = styled.div`
   margin-bottom: 14px;
 `;
 
-/* ===== Card ===== */
 const Card = styled.div`
   background: #fff;
-  border: 1px solid #e9eef2;
-  border-radius: 12px;
-  padding: 16px;
 `;
 const TitleRow = styled.div`
   display: flex;
@@ -107,18 +90,18 @@ const MailTitle = styled.h3`
   flex: 1;
   font-size: 16px;
   font-weight: 700;
-  margin: 0 0 2px;
+  margin: 0 0 16px;
   line-height: 1.4;
 `;
 
 const CardHr = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 12px 0 14px;
+  margin: 16px 0 16px;
 `;
 
-/* ===== Meta ===== */
 const Meta = styled.div`
   display: grid;
   grid-template-columns: 72px 1fr;
@@ -126,7 +109,7 @@ const Meta = styled.div`
   column-gap: 8px;
 `;
 const MetaLabel = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   color: #98a1a8;
   line-height: 28px;
 `;
@@ -163,31 +146,24 @@ const BodyText = styled.div`
   margin-top: 14px;
 `;
 
-/* ===== Attachment ===== */
 const Attachment = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border: 1px dashed #d7dee3;
   border-radius: 12px;
-  background: #f5f7f9;
-  margin-top: 14px;
 `;
-const AttachmentIcon = styled.div`
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #e3e7ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+const AttachmentIcon = styled.img`
+  display: block;
+  width: 14px;
+  height: 14px;
   background: #fff;
-  font-size: 14px;
+  object-fit: contain;
 `;
+
 const AttachmentName = styled.div`
   font-size: 13px;
-  color: #444;
+  color: #707070;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -245,15 +221,9 @@ export default function MailWasteDetail({ onClose }) {
   };
 
   return (
-    <PageWrap>
       <MobileShell>
-        <TopBar>
-          <CloseBtn aria-label="닫기" onClick={handleClose}>✕</CloseBtn>
-          <PageTitle>휴지통</PageTitle>
-          <TopActions />
-        </TopBar>
+        <CloseBtn aria-label="닫기" onClick={handleClose}>✕</CloseBtn>
 
-        {/* 시간 + 우측 액션(복구 / 영구삭제) */}
         <SubHeader>
           <TimeText>{receivedAt}</TimeText>
           <SmallBtn onClick={handleRestore}>복구</SmallBtn>
@@ -269,17 +239,12 @@ export default function MailWasteDetail({ onClose }) {
               aria-pressed={isStarred}
               onClick={toggleStar}
             >
-              <StarImg
-                src={isStarred ? "/img/staron.png" : "/img/star.png"}
-                alt="star"
-              />
+              <StarImg src={isStarred ? staron : star} alt={isStarred ? "starred" : "star"} />
             </StarBtn>
-            <div style={{ flex: 1 }}>
+            <div>
               <MailTitle>LMS 자료 접근 확인 요청</MailTitle>
             </div>
           </TitleRow>
-
-          <CardHr />
 
           <Meta>
             <MetaLabel>보낸 사람</MetaLabel>
@@ -298,19 +263,18 @@ export default function MailWasteDetail({ onClose }) {
               </Chip>
             </ChipRow>
           </Meta>
-
+          <CardHr />
           <BodyText>{"LMS 자료 접근 가능 여부 확인 부탁드립니다."}</BodyText>
 
           <Attachment>
-            <AttachmentIcon>📎</AttachmentIcon>
+            <AttachmentIcon src={clip}/>
             <AttachmentName>자바프로그래밍 권오규 10주차.hwp</AttachmentName>
           </Attachment>
-
+          <CardHr />
           <CardFooter>
             <Button onClick={handleClose}>목록</Button>
           </CardFooter>
         </Card>
       </MobileShell>
-    </PageWrap>
   );
 }

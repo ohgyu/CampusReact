@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import clip from './img/clip.png';
+import star from './img/star.png';
+import staron from './img/staron.png';
+import waste from './img/waste.png';
 
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background: #fafbfc;
-`;
 const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
+  width: 100vw;
+  padding: 12px 20px 24px;
+  background: #fafbfc;
 `;
 
 const TopBar = styled.div`
@@ -64,6 +61,7 @@ const SubHeader = styled.div`
   color: #98a1a8;
 `;
 const TimeText = styled.div`
+font-size: 12px;
   flex: 1;
 `;
 const MiniIconBtn = styled.button`
@@ -89,9 +87,6 @@ const PageDivider = styled.div`
 
 const Card = styled.div`
   background: #fff;
-  border: 1px solid #e9eef2;
-  border-radius: 12px;
-  padding: 16px;
 `;
 
 const TitleRow = styled.div`
@@ -128,10 +123,11 @@ const MailTitle = styled.h3`
 `;
 
 const CardHr = styled.div`
+  width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 12px 0 14px;
+  margin: 12px 0 16px;
 `;
 
 const Meta = styled.div`
@@ -139,11 +135,12 @@ const Meta = styled.div`
   grid-template-columns: 72px 1fr;
   row-gap: 8px;
   column-gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 `;
 
 const MetaLabel = styled.div`
   font-size: 12px;
-  color: #98a1a8;
   line-height: 28px;
 `;
 
@@ -157,7 +154,7 @@ const Chip = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 28px;
+  height: 26px;
   padding: 0 10px;
   border-radius: 999px;
   background: #DFFCF9;
@@ -166,6 +163,7 @@ const Chip = styled.span`
   color: #1f2937;
 `;
 const ChipName = styled.span`
+  color: #707070;
   font-weight: 600;
 `;
 const ChipEmail = styled.span`
@@ -178,33 +176,26 @@ const BodyText = styled.div`
   color: #6b7680;
   line-height: 1.7;
   white-space: pre-line;
-  margin-top: 30px;
 `;
 
 const Attachment = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border: 1px dashed #d7dee3;
   border-radius: 12px;
-  background: #f5f7f9;
-  margin-top: 14px;
 `;
-const AttachmentIcon = styled.div`
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #e3e7ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+const AttachmentIcon = styled.img`
+  display: block;
+  width: 14px;
+  height: 14px;
   background: #fff;
-  font-size: 14px;
+  object-fit: contain;
 `;
+
 const AttachmentName = styled.div`
   font-size: 13px;
-  color: #444;
+  color: #707070;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -247,19 +238,14 @@ export default function MailDetail({ onClose }) {
   };
 
   return (
-    <PageWrap>
       <MobileShell>
-        <TopBar>
-          <CloseBtn aria-label="닫기" onClick={handleClose}>✕</CloseBtn>
-          <PageTitle>메일</PageTitle>
-          <TopActions />
-        </TopBar>
+        <CloseBtn src={waste} aria-label="닫기" onClick={handleClose}>✕</CloseBtn>
 
         <SubHeader>
           <TimeText>{receivedAt}</TimeText>
-          <MiniIconBtn aria-label="삭제">
-          <img src="/img/waste.png" alt="삭제" style={{ width: "14px", height: "14px" }} />
-          </MiniIconBtn>
+          <CloseBtn aria-label="닫기" onClick={handleClose}>
+          <img src={waste} alt="닫기" style={{ width: 14, height: 14 }} />
+          </CloseBtn>
         </SubHeader>
 
         <PageDivider />
@@ -271,17 +257,12 @@ export default function MailDetail({ onClose }) {
               aria-pressed={isStarred}
               onClick={toggleStar}
             >
-              <StarImg
-                src={isStarred ? "/img/staron.png" : "/img/star.png"}
-                alt="star"
-              />
+             <StarImg src={isStarred ? staron : star} alt={isStarred ? "starred" : "star"} />
             </StarBtn>
-            <div style={{ flex: 1 }}>
+            <div>
               <MailTitle>LMS 자료 접근 확인 요청</MailTitle>
             </div>
           </TitleRow>
-
-          <CardHr />
 
           <Meta>
             <MetaLabel>보낸 사람</MetaLabel>
@@ -301,18 +282,20 @@ export default function MailDetail({ onClose }) {
             </ChipRow>
           </Meta>
 
+          <CardHr />
           <BodyText>{"LMS 자료 접근 가능 여부 확인 부탁드립니다."}</BodyText>
 
           <Attachment>
-            <AttachmentIcon>📎</AttachmentIcon>
+            <AttachmentIcon src={clip}/>
             <AttachmentName>자바프로그래밍 권오규 10주차.hwp</AttachmentName>
           </Attachment>
+
+          <CardHr />
 
           <CardFooter>
             <Button>목록</Button>
           </CardFooter>
         </Card>
       </MobileShell>
-    </PageWrap>
   );
 }

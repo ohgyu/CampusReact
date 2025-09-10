@@ -1,22 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import clip from './img/clip.png';
 
-const PageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
+const MobileShell = styled.div`
+  width: 100vw;
+  padding: 12px 20px 24px;
   background: #fafbfc;
 `;
 
-const MobileShell = styled.div`
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 12px 16px 24px;
-`;
-
 const TopBar = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 6px 0 10px;
 `;
@@ -24,15 +19,15 @@ const TopBar = styled.div`
 const PageTitle = styled.div`
   font-size: 18px;
   font-weight: 700;
+  margin-left: 10px;
 `;
 
 const TopActions = styled.div`
-  margin-left: auto;
   display: flex;
   gap: 8px;
 `;
 
-const TopBtn = styled.button`
+const DeleteBtn = styled.button`
   height: 28px;
   padding: 0 12px;
   font-size: 12px;
@@ -43,9 +38,22 @@ const TopBtn = styled.button`
   cursor: pointer;
 `;
 
+const ModifyBtn = styled.button`
+  height: 28px;
+  padding: 0 12px;
+  font-size: 12px;
+  border: 1px solid #2EC4B6;
+  background: #2EC4B6;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+`;
+
 const PageDivider = styled.div`
+width: 372px;
   height: 2px;
-  background: #2ec4b6;
+  background: #2EC4B6;
   opacity: .6;
   border-radius: 2px;
   margin-bottom: 14px;
@@ -53,72 +61,73 @@ const PageDivider = styled.div`
 
 const Card = styled.div`
   background: #fff;
-  border: 1px solid #e9eef2;
-  border-radius: 12px;
-  padding: 16px;
 `;
 
 const CardHead = styled.div`
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
   gap: 8px;
 `;
 
 const CardTitle = styled.h3`
-  flex: 1;
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 6px;
   line-height: 1.4;
+  margin-left: 10px;
 `;
 
 const ViewCount = styled.span`
-  white-space: nowrap;
-  font-size: 12px;
+  font-size: 13px;
   color: #98a1a8;
+  margin-right: 10px;
 `;
 
 const DateText = styled.div`
   font-size: 12px;
   color: #98a1a8;
-  margin-bottom: 12px;
+  margin-left: 10px;
 `;
 
 const CardHr = styled.div`
+width: 372px;
   height: 1px;
-  background: #eceff1;
+  background: #D9D9D9;
   border: 0;
-  margin: 12px 0 14px;
+  margin: 12px 0 10px;
+`;
+
+const GrayLine = styled.div`
+width: 372px;
+  height: 1px;
+  background: #D9D9D9;
+  border: 0;
+  margin: 9px auto 14px;
 `;
 
 const BodyText = styled.div`
   font-size: 13px;
-  color: #6b7680;
-  line-height: 1.7;
+  color: #212121;
+  line-height: 1.5;
   white-space: pre-line;
+  margin-left: 10px;
 `;
 
 const Attachment = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border: 1px dashed #d7dee3;
   border-radius: 12px;
-  background: #f5f7f9;
-  margin-top: 14px;
+  margin-top: 100px;
 `;
 
-const AttachmentIcon = styled.div`
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #e3e7ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const AttachmentIcon = styled.img`
+  display: block;
+  width: 14px;
+  height: 14px;
   background: #fff;
-  font-size: 14px;
+  object-fit: contain;
+  margin-left: 10px;
 `;
 
 const AttachmentName = styled.div`
@@ -139,22 +148,22 @@ const Button = styled.button`
   height: 28px;
   padding: 0 12px;
   font-size: 12px;
-  border: 1px solid #dfe5ea;
+  border: 1px solid #2EC4B6;
   background: #fff;
-  color: #59636b;
+  color: #2EC4B6;
   border-radius: 8px;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 function LectureNoticeDetail() {
   return (
-    <PageWrap>
       <MobileShell>
         <TopBar>
           <PageTitle>공지사항</PageTitle>
           <TopActions>
-            <TopBtn>삭제</TopBtn>
-            <TopBtn>수정</TopBtn>
+            <DeleteBtn>삭제</DeleteBtn>
+            <ModifyBtn>수정</ModifyBtn>
           </TopActions>
         </TopBar>
         <PageDivider />
@@ -175,16 +184,15 @@ function LectureNoticeDetail() {
           </BodyText>
 
           <Attachment>
-            <AttachmentIcon>📎</AttachmentIcon>
+            <AttachmentIcon src={clip}/>
             <AttachmentName>첨부파일.pdf</AttachmentName>
           </Attachment>
-
+          <GrayLine />
           <CardFooter>
             <Button>목록</Button>
           </CardFooter>
         </Card>
       </MobileShell>
-    </PageWrap>
   );
 }
 
