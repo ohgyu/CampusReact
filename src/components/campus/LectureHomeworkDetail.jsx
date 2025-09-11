@@ -140,7 +140,6 @@ export const SubmissionAuthor = styled.span`
 
 const SubmissionTime = styled.span`
   white-space: nowrap;
-  margin-left: 6px;
   font-size: 12px;
   color: #98a1a8;
 `;
@@ -205,7 +204,12 @@ const Line = styled.div`
   width: 100%;
   height: 12px; 
   color: #666666;
-`
+`;
+
+const Meta = styled.div`
+  font-size: 12px;
+  color: #98a1a8;
+`;
 
 export default function LectureHomeworkDetail() {
   return (
@@ -243,6 +247,7 @@ export default function LectureHomeworkDetail() {
         <Card>
           <SubmissionHead>
             <SubmissionAuthor>권오규</SubmissionAuthor>
+            <Meta>ㅣ</Meta>
             <SubmissionTime>제출 시간 : 2025-07-31 23:56</SubmissionTime>
             <SubmissionActions>
               <Chip>삭제</Chip>

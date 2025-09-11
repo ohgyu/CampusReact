@@ -16,11 +16,13 @@ const TopBar = styled.div`
 const PageTitle = styled.div`
   font-size: 18px;
   font-weight: 700;
+  margin-left: 10px;
 `;
 const TopActions = styled.div`
   margin-left: auto;
   display: flex;
   gap: 8px;
+  margin-right: 10px;
 `;
 
 const DeleteBtn = styled.button`
@@ -61,25 +63,29 @@ const CardHead = styled.h3`
   font-weight: 700;
   margin: 0 0 8px;
   line-height: 1.4;
+  margin-left: 10px;
 `;
 const Meta = styled.div`
   font-size: 12px;
   color: #98a1a8;
   margin-bottom: 12px;
+  margin-left: 10px;
 `;
 const BodyText = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #6b7680;
   line-height: 1.7;
   margin-bottom: 14px;
   white-space: pre-line;
-  margin-bottom: 120px;
+  margin-bottom: 100px;
+  margin-left: 10px;
 `;
 const Attachment = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   border-radius: 12px;
+  margin-left: 10px;
 `;
 
 const AttachmentIcon = styled.img`
@@ -111,6 +117,7 @@ const Button = styled.button`
   color: #59636b;
   border-radius: 8px;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 const CommentSection = styled.div`
@@ -121,9 +128,11 @@ const CommentCount = styled.div`
   font-weight: 700;
   margin-bottom: 10px;
   color: #707070;
+  margin-left: 10px;
 `;
 const CommentCard = styled.div`
   background: #fff;
+  margin-left: 10px;
 `;
 const CommentHead = styled.div`
   display: flex;
@@ -150,6 +159,7 @@ const CommentActions = styled.div`
   margin-left: auto;
   display: flex;
   gap: 6px;
+  margin-right: 10px;
 `;
 const SmallBtn = styled.button`
   font-size: 11px;
@@ -201,7 +211,12 @@ const CardHr = styled.div`
   border: 0;
   margin: 15px 0 15px;
 `;
-
+const Line = styled.div`
+  width: 372px;
+  height: 12px;
+  color: #444444;
+  margin-top: 20px;
+`
 
 
 export default function BoardDetail() {
@@ -233,7 +248,7 @@ export default function BoardDetail() {
             <Button>목록</Button>
           </CardFooter>
         </Card>
-
+        <Line/>
         <CommentSection>
           <CommentCount>댓글 3</CommentCount>
           <PageDivider />

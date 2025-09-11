@@ -53,7 +53,7 @@ function CampusMain() {
    
         <Container>
           <TopNav></TopNav>
-          <ProjectObjectDetail></ProjectObjectDetail>
+          <LectureHomeworkDetail></LectureHomeworkDetail>
         </Container>
 
     </BrowserRouter>

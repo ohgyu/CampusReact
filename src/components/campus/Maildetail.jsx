@@ -31,6 +31,7 @@ const CloseBtn = styled.button`
   justify-content: center;
   font-size: 16px;
   line-height: 1;
+  margin-left: 10px;
 `;
 
 const PageTitle = styled.div`
@@ -63,6 +64,7 @@ const SubHeader = styled.div`
 const TimeText = styled.div`
 font-size: 12px;
   flex: 1;
+  margin-left: 10px;
 `;
 const MiniIconBtn = styled.button`
   width: 24px;
@@ -106,6 +108,7 @@ const StarBtn = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
 `;
 
 const StarImg = styled.img`
@@ -137,6 +140,7 @@ const Meta = styled.div`
   column-gap: 8px;
   margin-top: 16px;
   margin-bottom: 16px;
+  margin-left: 10px;
 `;
 
 const MetaLabel = styled.div`
@@ -163,11 +167,9 @@ const Chip = styled.span`
   color: #1f2937;
 `;
 const ChipName = styled.span`
-  color: #707070;
   font-weight: 600;
 `;
 const ChipEmail = styled.span`
-  color: #6b7680;
 `;
 
 const BodyText = styled.div`
@@ -176,6 +178,7 @@ const BodyText = styled.div`
   color: #6b7680;
   line-height: 1.7;
   white-space: pre-line;
+  margin-left: 10px;
 `;
 
 const Attachment = styled.div`
@@ -183,6 +186,7 @@ const Attachment = styled.div`
   align-items: center;
   gap: 10px;
   border-radius: 12px;
+  margin-left: 10px;
 `;
 
 const AttachmentIcon = styled.img`
@@ -216,6 +220,7 @@ const Button = styled.button`
   color: #59636b;
   border-radius: 8px;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 export default function MailDetail({ onClose }) {
